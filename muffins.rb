@@ -27,7 +27,7 @@ class Muffins
         5: Restart Rails 
         6: Load Remote data 
         7: Load seed data
-        8. Exit"
+        8. Stop Muffins"
       end 
   end 
 end 
@@ -36,11 +36,12 @@ muffins = Muffins.new
 
 def handle_input(input)
   result = eval(input)
+  exit if result == 8
   puts(" => #{result}")
 end
 
 repl = -> prompt do
-  puts "Rails Helper"
+  puts "What can muffins do for you?"
   puts initial_prompt
   puts Muffins.options
   handle_input(gets.chomp!)
