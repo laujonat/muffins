@@ -1,0 +1,6 @@
+bash-completion
+zsh-completion
+git
+git-duet
+yarn --ignore-dependencies
+heroku

@@ -14,37 +14,73 @@ def initial_prompt
   puts "    \\___)=(___/`"
 
   puts "\n\n"
-end 
+end
+
+# Install Ruby
+# Install bundler
+# install Brew ( Assumption brew is installed)
+
+# Install brew files - postgres / chromedrive
+
+def verify_postgresql
+  version = system("postgres -V | awk \'{print $NF}' >&2")
+  puts "You are currently running version #version" unless version == 10.6
+  puts "Please use version 10.6"
+end
+
+# def locate_postgres
+#   pg_path = system('which postgres')
+
+#   if pg_path
+#     pg_path
+#   end
+
+#   'which '
+# end
 
 class Muffins
-  class << self 
-    def options
-      puts " 
-        1: Start Postgresql
-        2: Stop Postgresql
-        3: Start Rails
-        4: Stop Rails 
-        5: Restart Rails 
-        6: Load Remote data 
-        7: Load seed data
-        8. Stop Muffins"
-      end 
-  end 
-end 
+  def initialize
+    system('clear')
+    @choice = 0
+    @initial_choices = ['A', 'B', 'C']
+    @choices = @initial_choices
+  end
+
+  def choose(choice)
+    set_state(choice)
+  end
+
+  def render
+    @choices
+  end
+
+  private
+  def handle_input(input)
+    run_command(@choice) unless input != ""
+  end
+
+  def set_state(input)
+    handle_input(input)
+    @choice = input - 1
+    choices = @initial_choices.dup
+    choices[input - 1] = '> ' + choices[input - 1]
+    @choices = choices
+  end
+
+  def run_command(choice)
+    commands = []
+    system(commands[choice])
+  end
+end
 
 muffins = Muffins.new
-
-def handle_input(input)
-  result = eval(input)
-  exit if result == 8
-  puts(" => #{result}")
-end
 
 repl = -> prompt do
   puts "What can muffins do for you?"
   puts initial_prompt
-  puts Muffins.options
-  handle_input(gets.chomp!)
+  puts muffins.render
+  muffins.choose(eval(gets.chomp!))
+  system('clear')
 end
 
 loop do
