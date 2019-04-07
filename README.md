@@ -1,5 +1,7 @@
 # Muffins 🍦
-Do yourself a favor and avoid carpal tunnel with this Ruby on Rails REPL.
+Do yourself a favor and avoid carpal tunnel with this Ruby on Rails REPL. 
+
+With @rodocite
 
 ## Setup
 ```bash
