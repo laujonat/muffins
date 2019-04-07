@@ -19,6 +19,7 @@ end
 class Muffins
   class << self 
     def options
+      puts "<-"
       puts " 
         1: Start Postgresql
         2: Stop Postgresql
@@ -34,9 +35,40 @@ end
 
 muffins = Muffins.new
 
+def start_postgres 
+  system("pwd")
+end 
+
+def stop_postgres
+  system("ls -la") 
+end 
+
+def start_starts
+  
+
+end 
+
+def stop_rails 
+  # 1. rails server close 
+  # 2. search PID rails -> kill -9
+
+end 
+
+
+
 def handle_input(input)
   result = eval(input)
-  exit if result == 8
+  
+  case result 
+    when 1
+      start_postgres
+    when 2 
+      stop_postgres
+    when 8
+      exit
+    else 
+      puts "not an option, idiot."
+  end 
   puts(" => #{result}")
 end
 
