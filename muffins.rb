@@ -23,7 +23,7 @@ class Muffins
       puts "
         1: Start Postgresql
         2: Stop Postgresql
-        3: Start Rails
+        3: Rails
         4: Stop Rails
         5: Restart Rails
         6: Load Remote data
@@ -35,21 +35,25 @@ end
 
 muffins = Muffins.new
 
+def pg_ctl
+	"pg_ctl -D /usr/local/var/postgres"
+end 
+
 def start_postgres
-  system("pwd")
+  system("#{pg_ctl} start")
 end
 
 def stop_postgres
-  system("ls -la")
+  system("#{pg_ctl} stop")
 end
 
-def start_starts
-
+def start_rails 
+	system("osascript setup.scpt")
+	system("bin/rails s")
 end
 
 def stop_rails
-  # 1. rails server close
-  # 2. search PID rails -> kill -9
+  system("lsof -ti:3000 | xargs kill -9s")
 end
 
 def verify_postgresql
@@ -65,6 +69,8 @@ def handle_input(input)
       start_postgres
     when 2
       stop_postgres
+    when 3
+      start_rails
     when 8
       exit
     else

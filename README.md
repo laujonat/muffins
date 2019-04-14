@@ -9,9 +9,6 @@ With @rodocite
 # Optionally you can alias script in ~/.bash_profile
 $ ruby muffins.rb
 
-# TODO
-# Set PATH=$PATH:$HOME/bin if you haven't already
-$ cd /bin
 $ chmod u+x setup_muffins.sh
 $ setup_muffins.sh # [wip]
 ```
