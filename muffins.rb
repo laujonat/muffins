@@ -1,25 +1,25 @@
-def initial_prompt
-  user = `git config user.name`
-  puts " ___________________"
-  puts "  Hi, #{user}".delete!("\n")
-  puts "  -------------------"
-  puts "   \\"
-  puts "    \\"
-  puts "        .--."
-  puts "       |o_o |"
-  puts "       |:_/ |"
-  puts "      //   \ \\"
-  puts "     (|     | )"
-  puts "    /\"\_   _/`\\"
-  puts "    \\___)=(___/`"
-
-  puts "\n\n"
-end
-
 class Muffins
   class << self
+    def initial_prompt
+      user = `git config user.name`
+      puts " ___________________"
+      puts "  Hi, #{user}".delete!("\n")
+      puts "  -------------------"
+      puts "   \\"
+      puts "    \\"
+      puts "        .--."
+      puts "       |o_o |"
+      puts "       |:_/ |"
+      puts "      //   \ \\"
+      puts "     (|     | )"
+      puts "    /\"\_   _/`\\"
+      puts "    \\___)=(___/`"
+
+      puts "\n\n"
+    end
+
     def options
-      puts "<-"
+      puts "_________________________"
       puts "
         1: Start Postgresql
         2: Stop Postgresql
@@ -32,8 +32,6 @@ class Muffins
       end
   end
 end
-
-muffins = Muffins.new
 
 def pg_ctl
 	"pg_ctl -D /usr/local/var/postgres"
@@ -70,6 +68,8 @@ def handle_input(input)
       stop_postgres
     when 3
       start_rails
+    when 3
+      stop_rails
     when 8
       exit
     else
@@ -81,7 +81,7 @@ end
 repl = -> prompt do
   puts verify_postgresql
   puts "What can muffins do for you?"
-  puts initial_prompt
+  puts Muffins.initial_prompt
   puts Muffins.options
   handle_input(gets.chomp!)
 end
