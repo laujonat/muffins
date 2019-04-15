@@ -5,6 +5,7 @@ Do yourself a favor and avoid carpal tunnel with this Ruby on Rails REPL.
   > Local Git configuration set up
   > No have ngrok set up (optional)
   > An alias exists to desired project directory `cd ../_DEV/rails_project` 
+  > TBD: MVP will only support Heroku -> Install `heroku cli` 
 
 ## Setup
 ```bash
@@ -22,10 +23,9 @@ $ setup_muffins.sh # [wip]
 ```bash
 # TODO: use .env to allow user to configurate SDLC environemnt 
 # Set personal values in .env
-$ ruby muffins.rb
-
+$ ruby muffins.rb 
 ```
 
 ## Features
 > Quick terminal pane setup for a Rails development environment
-> 
+> Easy Heroku environment pane setup
