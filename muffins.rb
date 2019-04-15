@@ -23,7 +23,7 @@ class Muffins
       puts "
         1: Start Postgresql
         2: Stop Postgresql
-        3: Rails
+        3: Nrok Rails 
         4: Stop Rails
         5: Restart Rails
         6: Load Remote data
@@ -49,7 +49,6 @@ end
 
 def start_rails 
 	system("osascript setup.scpt")
-	system("bin/rails s")
 end
 
 def stop_rails
