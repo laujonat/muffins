@@ -83,6 +83,7 @@ repl = -> prompt do
   puts "What can muffins do for you?"
   puts Muffins.initial_prompt
   puts Muffins.options
+  print "❓>> "
   handle_input(gets.chomp!)
 end
 
